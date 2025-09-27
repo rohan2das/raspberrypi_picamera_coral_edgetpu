@@ -72,7 +72,7 @@ The Coral Edge TPU runtime library requires a specific Python version (**3.6 - 3
     ```
 3.  **Install `pyenv`:**
     ```bash
-    curl [https://pyenv.run](https://pyenv.run) | bash
+    curl https://pyenv.run | bash
     ```
 4.  **Configure your shell environment for `pyenv`**. This adds `pyenv` to your path for the current session and for future logins.
     ```bash
