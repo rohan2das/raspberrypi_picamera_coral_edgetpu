@@ -27,9 +27,9 @@ The system is split into two main components:
 
 ## Prerequisites
 
--   Raspberry Pi (or similar Single Board Computer)
+-   Raspberry Pi
 -   Google Coral USB Accelerator
--   A camera module compatible with your sender device (e.g., Raspberry Pi Camera Module)
+-   A camera module compatible with device (e.g., Raspberry Pi Camera Module)
 
 ---
 
@@ -45,7 +45,7 @@ This project requires two separate environments: one for sending the camera feed
     ```
 2.  **Create and activate a virtual environment:**
     ```bash
-    python3 -m venv venv_picam
+    python3 -m venv venv_picam --system-site-packages
     source venv_picam/bin/activate
     ```
 3.  **Install the required packages:**
@@ -96,23 +96,34 @@ The Coral Edge TPU runtime library requires a specific Python version (**3.6 - 3
     pyenv install 3.9.12
     ```
 
-3.  **Set the local Python version for this directory**. `pyenv` will now automatically use Python 3.9.12 whenever you are in this folder.
+2.  **Set the local Python version for this directory**. `pyenv` will now automatically use Python 3.9.12 whenever you are in this folder.
     ```bash
     pyenv local 3.9.12
     ```
-4.  **Verify that the correct Python version is active:**
+3.  **Verify that the correct Python version(3.9.12) is active:**
     ```bash
     python --version
-    # Expected output: Python 3.9.12
     ```
-5.  **Create and activate a new virtual environment** using Python 3.9:
+4.  **Create and activate a new virtual environment** using Python 3.9:
     ```bash
     python -m venv venv_picam
     source venv_picam/bin/activate
     ```
-6.  **Install the required Python packages** for the receiver, including the Coral libraries:
+5.  **Install the required Python packages** for the receiver:
     ```bash
-    pip install -r requirements.txt
+    pip install -r requirements_coral.txt
+    ```
+6.  **Setup EdgeTPU device** for raspberrypi, including the Coral libraries:
+    ```bash
+    silvatpu-linux-setup
+    ```
+7.  **(Optional)** running coral hardware at maximum frequency:
+    ```bash
+    silvatpu-linux-setup --speed max
+    ```
+8. **Reboot** you raspberry pi:
+    ```bash
+    sudo reboot
     ```
 
 ---
